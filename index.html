@@ -67,7 +67,64 @@
                 <td>Recreation center</td>
                 <td>0$</td>
             </tr>
-        </table>
+        </table><br>
+<hr>
+<h3>Minimum stack / Minimum queue Algorithm</h3>
+<blockquote> In computer science, a stack is an abstract data type that serves as a collection of elements, with two main principal operations:
+
+    Push, which adds an element to the collection, and
+    Pop, which removes the most recently added element that was not yet removed.
+    The order in which elements come off a stack gives rise to its alternative name, LIFO (last in, first out). Additionally, a peek operation may give access to the top without modifying the stack.
+     The name "stack" for this type of structure comes from the analogy to a set of physical items stacked on top of each other. This structure makes it easy to take an item off the top of the stack, 
+    while getting to an item deeper in the stack may require taking off multiple other items first.
+
+    <p>Link for Source of the Algorithm <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Minimum Stack</a></p>
+
+</blockquote>
+<br>
+<pre>
+    stack<pair<int, int>> st;
+        int new_min = st.empty() ? new_elem : min(new_elem, st.top().second);
+    st.push({new_elem, new_min});
+    int removed_element = st.top().first;
+    st.pop();
+    int minimum = st.top().second;
+    deque<int> q;
+        while (!q.empty() && q.back() > new_element)
+        q.pop_back();
+    q.push_back(new_element);
+    if (!q.empty() && q.front() == remove_element)
+    q.pop_front();
+    deque<pair<int, int>> q;
+int cnt_added = 0;
+int cnt_removed = 0;
+while (!q.empty() && q.back().first > new_element)
+    q.pop_back();
+q.push_back({new_element, cnt_added});
+cnt_added++;
+if (!q.empty() && q.front().second == cnt_removed) 
+    q.pop_front();
+cnt_removed++;
+if (s1.empty() || s2.empty()) 
+    minimum = s1.empty() ? s2.top().second : s1.top().second;
+else
+    minimum = min(s1.top().second, s2.top().second);
+    if (s2.empty()) {
+        while (!s1.empty()) {
+            int element = s1.top().first;
+            s1.pop();
+            int minimum = s2.empty() ? element : min(element, s2.top().second);
+            s2.push({element, minimum});
+        }
+    }
+    int remove_element = s2.top().first;
+    s2.pop();
+    
+    <p>Link for Code of Algorithm <a href="https://cp-algorithms.com/data_structures/stack_queue_modification.html">Minimum Stack Algorithm </a></p> 
+
+
+</pre>
+
 
 </body>
 </html>
